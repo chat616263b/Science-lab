@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>مختبر العلوم التفاعلي | الانتشار والخاصية الأسموزية</title>
+<style>
+:root{--bg:#f4fbff;--card:#fff;--ink:#18324a;--muted:#62788b;--line:#dbe9f2;--a:#2474d8;--b:#22a06b;--warn:#e19a22;--shadow:0 14px 35px rgba(28,70,105,.12)}
+*{box-sizing:border-box} body{margin:0;font-family:Tahoma,Arial,sans-serif;background:linear-gradient(135deg,#eef9ff,#f9fff8);color:var(--ink)}
+header{padding:18px 24px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:16px;position:sticky;top:0;z-index:10}
+.brand{display:flex;align-items:center;gap:12px}.logo{width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,#2474d8,#22a06b);display:grid;place-items:center;color:white;font-size:26px}.brand h1{font-size:20px;margin:0}.brand p{margin:4px 0 0;color:var(--muted);font-size:13px}.badge{background:#e9f6ff;color:#1760ad;border:1px solid #cfe7fb;padding:8px 12px;border-radius:999px;font-weight:700;font-size:13px}
+main{max-width:1180px;margin:24px auto;padding:0 18px 40px}.intro,.concepts,.resultsTable,.finalQ{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:20px;box-shadow:var(--shadow);margin-bottom:18px}.intro h2{margin:0 0 8px;font-size:24px}.intro p{margin:0;color:var(--muted);line-height:1.8}
+.conceptgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.concept{border:1px solid var(--line);border-radius:16px;padding:14px;background:#fbfdff}.concept strong{display:block;margin-bottom:6px}.concept span{color:var(--muted);line-height:1.7}
+.grid{display:grid;grid-template-columns:330px 1fr;gap:18px}.panel,.lab{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)}.panel{padding:18px}.panel h3{margin:0 0 14px}.control{padding:14px 0;border-top:1px solid #edf3f7}.control:first-of-type{border-top:0}.control label{display:block;font-weight:700;margin-bottom:8px}.seg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px}.seg button,.actions button,.quiz button,.finalQ button{border:1px solid var(--line);background:#f8fbfd;color:var(--ink);padding:10px 8px;border-radius:12px;cursor:pointer;font-weight:700}.seg button.active{background:#e6f2ff;border-color:#87b9ef;color:#145eae}.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}.actions .start{background:var(--a);color:#fff;border-color:var(--a)}.actions .reset{background:#fff}
+.prediction{margin-top:12px}.prediction select{width:100%;padding:10px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+.lab{padding:18px;min-height:570px}.labtop{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}.labtop h3{margin:0}.status{padding:7px 10px;border-radius:999px;background:#eef7f3;color:#16704b;font-size:13px;font-weight:700}
+.stage{position:relative;height:355px;border-radius:20px;overflow:hidden;background:linear-gradient(#e9f7ff 0 52%,#dff5ec 52%);border:1px solid #d8e8ef}.caption{position:absolute;top:14px;background:rgba(255,255,255,.88);padding:7px 11px;border-radius:999px;font-size:13px;font-weight:700}.capout{right:14px}.capin{left:14px}
+.cell{position:absolute;left:50%;top:54%;transform:translate(-50%,-50%);width:190px;height:190px;border-radius:48% 52% 47% 53%;border:7px solid rgba(31,111,181,.55);background:rgba(141,210,255,.30);box-shadow:inset 0 0 0 3px rgba(255,255,255,.7),0 10px 25px rgba(24,85,130,.18);transition:width 1.8s,height 1.8s,background 1.8s}.nucleus{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:62px;height:62px;border-radius:50%;background:#8f6ad7aa;border:4px solid #7a55c3}.membrane{position:absolute;left:50%;top:54%;height:250px;border-left:4px dashed #4f95c9;opacity:.35}
+.direction{position:absolute;left:50%;top:84%;transform:translateX(-50%);z-index:5;background:rgba(255,255,255,.94);border:1px solid #bcd8eb;padding:8px 14px;border-radius:999px;font-weight:700;color:#1760ad;display:none}
+.particle{position:absolute;border-radius:50%;pointer-events:none}.water{width:12px;height:12px;background:#2f9df4;box-shadow:0 0 0 3px #ffffff88}.solute{width:14px;height:14px;background:#f0a22e;border-radius:4px;transform:rotate(20deg)}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin:12px 2px 0;color:var(--muted);font-size:14px}.dot{display:inline-block;width:11px;height:11px;border-radius:50%;margin-left:6px;vertical-align:-1px}.dot.water{position:static;box-shadow:none}.dot.solute{position:static;border-radius:2px;transform:none}.legendNote{font-weight:700;color:#526c80}
+.result{margin-top:14px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}.box{border:1px solid var(--line);border-radius:16px;padding:14px;background:#fbfdff}.box strong{display:block;margin-bottom:6px}.box span{color:var(--muted);line-height:1.7}.quiz{margin-top:16px;border-top:1px solid var(--line);padding-top:16px}.quiz h4{margin:0 0 10px}.quiz .opts,.finalQ .opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}.quiz button.correct,.finalQ button.correct{background:#e8f7ef;border-color:#69bc92}.quiz button.wrong,.finalQ button.wrong{background:#fff0f0;border-color:#e69a9a}.feedback{min-height:25px;margin-top:9px;font-weight:700}
+.resultsTable{margin-top:18px}.resultsTable h3,.finalQ h3{margin-top:0}table{width:100%;border-collapse:collapse;font-size:14px}th,td{border:1px solid var(--line);padding:10px;text-align:center}th{background:#eef7fc}.small{font-size:13px;color:var(--muted);line-height:1.7}
+footer{text-align:center;color:var(--muted);font-size:12px;margin-top:18px}.tip{margin-top:12px;background:#fff8e7;border:1px solid #f4deb0;padding:12px;border-radius:14px;color:#76551c;line-height:1.7}
+.diffusionLab{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:18px;margin-bottom:18px}
+.diffusionHead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}
+.diffusionHead h3{margin:0}.diffStage{position:relative;height:260px;border-radius:20px;overflow:hidden;background:linear-gradient(90deg,#fff7e7 0 50%,#eef8ff 50%);border:1px solid #d8e8ef}
+.diffStage:after{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:2px dashed rgba(80,120,150,.25)}
+.diffLabel{position:absolute;top:12px;background:rgba(255,255,255,.9);padding:7px 11px;border-radius:999px;font-size:13px;font-weight:700;z-index:3}.diffHigh{right:14px}.diffLow{left:14px}
+.diffParticle{position:absolute;width:14px;height:14px;border-radius:50%;background:#f0a22e;box-shadow:0 0 0 3px #ffffff99;transition:left 2.4s ease,top 2.4s ease}
+.diffActions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}.diffActions button{border:1px solid var(--line);padding:10px 14px;border-radius:12px;font-weight:700;cursor:pointer;background:#f8fbfd;color:var(--ink)}.diffActions .run{background:var(--b);border-color:var(--b);color:#fff}
+.diffResult{margin-top:12px;border:1px solid var(--line);border-radius:16px;padding:13px;background:#fbfdff;color:var(--muted);line-height:1.7}
+.diffArrow{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);z-index:4;background:rgba(255,255,255,.94);border:1px solid #f0c36d;border-radius:999px;padding:8px 14px;font-weight:700;color:#9a6510;opacity:0;transition:opacity .35s;pointer-events:none}.diffArrow.show{opacity:1}.diffQuiz{margin-top:14px;border-top:1px solid var(--line);padding-top:14px}.diffQuiz h4{margin:0 0 10px}.diffQuiz .opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}.diffQuiz button{border:1px solid var(--line);background:#f8fbfd;color:var(--ink);padding:10px 8px;border-radius:12px;cursor:pointer;font-weight:700}.diffQuiz button.correct{background:#e8f7ef;border-color:#69bc92}.diffQuiz button.wrong{background:#fff0f0;border-color:#e69a9a}.summaryCard{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:18px}.summaryCard h3{margin-top:0}.summaryGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.summaryItem{border:1px solid var(--line);border-radius:16px;padding:14px;background:#fbfdff;line-height:1.8}.summaryItem strong{display:block;margin-bottom:5px}
+@media(max-width:820px){.grid{grid-template-columns:1fr}.lab{min-height:auto}.stage{height:330px}.result,.conceptgrid{grid-template-columns:1fr}.quiz .opts,.finalQ .opts{grid-template-columns:1fr}.badge{display:none}.resultsTable{overflow-x:auto}table{min-width:700px}.diffQuiz .opts,.summaryGrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="brand"><div class="logo">🔬</div><div><h1>مختبر العلوم التفاعلي</h1><p>علوم الصف السادس الابتدائي</p></div></div><div class="badge">التجربة ١: الانتشار والخاصية الأسموزية</div></header>
+<main>
+<section class="intro"><h2>💧 ماذا يحدث للخلية عندما يختلف تركيز المواد حولها؟</h2><p>غيّر تركيز المواد المذابة داخل الخلية وخارجها، ثم ابدأ المحاكاة ولاحظ اتجاه حركة الماء وتغيّر حجم الخلية. استخدم النموذج للتمييز بين <b>الانتشار</b> و<b>الخاصية الأسموزية</b>.</p></section>
+
+<section class="concepts"><div class="conceptgrid">
+<div class="concept"><strong>🟠 الانتشار</strong><span>انتقال الجزيئات من منطقة يكون تركيزها فيها مرتفعًا إلى منطقة يكون تركيزها فيها منخفضًا حتى تتوزع بصورة أكثر توازنًا.</span></div>
+<div class="concept"><strong>💧 الخاصية الأسموزية</strong><span>الانتقال الصافي للماء عبر غشاء شبه منفذ من الجهة الأقل تركيزًا بالمواد المذابة إلى الجهة الأعلى تركيزًا بها.</span></div>
+</div></section>
+
+<section class="diffusionLab">
+<div class="diffusionHead"><h3>🟠 الجزء الأول: محاكاة الانتشار</h3><span class="status" id="diffStatus">جاهزة للتجربة</span></div>
+<p class="small">ابدأ والجزيئات متجمعة في منطقة عالية التركيز، ثم راقب كيف تتحرك عشوائيًا وتنتشر حتى تصبح أكثر توازنًا بين المنطقتين. لا يوجد غشاء خلوي في هذا الجزء.</p>
+<div class="diffStage" id="diffStage"><div class="diffLabel diffHigh">تركيز مرتفع</div><div class="diffLabel diffLow">تركيز منخفض</div><div class="diffArrow" id="diffArrow">الاتجاه الصافي للانتشار ←</div></div>
+<div class="diffActions"><button class="run" id="runDiff">▶ ابدأ الانتشار</button><button id="resetDiff">↻ إعادة الانتشار</button></div>
+<div class="diffResult"><b>👀 ملاحظة الانتشار: </b><span id="diffObservation">الجزيئات متجمعة في منطقة التركيز المرتفع. شغّل المحاكاة ولاحظ تغير توزيعها.</span></div>
+<div class="diffQuiz"><h4>🧠 تحقق من فهمك: ما الاتجاه الصافي للانتشار عندما يختلف التركيز بين منطقتين؟</h4><div class="opts"><button data-diff="right">من التركيز المرتفع إلى المنخفض</button><button data-diff="wrong">من التركيز المنخفض إلى المرتفع</button><button data-diff="wrong">لا تتحرك الجزيئات</button><button data-diff="wrong">تتحول الجزيئات إلى ماء</button></div><div class="feedback" id="diffFeedback"></div></div>
+</section>
+
+<div class="grid">
+<aside class="panel">
+<h3>💧 الجزء الثاني: إعداد الخاصية الأسموزية</h3>
+<div class="control"><label>تركيز المواد المذابة خارج الخلية</label><div class="seg" data-key="outside"><button data-v="low">منخفض</button><button class="active" data-v="mid">متوسط</button><button data-v="high">مرتفع</button></div></div>
+<div class="control"><label>تركيز المواد المذابة داخل الخلية</label><div class="seg" data-key="inside"><button data-v="low">منخفض</button><button class="active" data-v="mid">متوسط</button><button data-v="high">مرتفع</button></div></div>
+<div class="prediction"><label><b>🔎 توقعي قبل التجربة</b></label><select id="prediction"><option value="">اختر توقعك…</option><option>يدخل الماء إلى الخلية</option><option>يخرج الماء من الخلية</option><option>لا يحدث انتقال صافٍ للماء</option></select></div>
+<div class="actions"><button class="start" id="start">▶ ابدأ التجربة</button><button class="reset" id="reset">↻ إعادة</button></div>
+<div class="tip"><b>تذكّر:</b> جزيئات الماء تتحرك باستمرار. عند التوازن تتحرك في الاتجاهين، لكن لا يحدث <b>انتقال صافٍ</b> يغيّر حجم الخلية.</div>
+</aside>
+<section class="lab">
+<div class="labtop"><h3>🧫 محاكاة الخاصية الأسموزية</h3><span class="status" id="status">جاهزة للتجربة</span></div>
+<div class="stage" id="stage"><div class="caption capout">خارج الخلية</div><div class="caption capin">داخل الخلية</div><div class="membrane"></div><div class="cell" id="cell"><div class="nucleus"></div></div><div class="direction" id="direction"></div></div>
+<div class="legend"><span><i class="dot water"></i>جزيئات الماء</span><span><i class="dot solute"></i>مواد مذابة</span><span class="legendNote">في نموذج الأسموزية: الغشاء شبه منفذ؛ يسمح بمرور الماء، ولا نمثل عبور المواد المذابة.</span></div>
+<div class="result">
+<div class="box"><strong>👀 الملاحظة</strong><span id="observation">اضبط القيم ثم اضغط «ابدأ التجربة».</span></div>
+<div class="box"><strong>📏 حجم الخلية</strong><span id="sizeResult">لم تُشغّل التجربة بعد.</span></div>
+<div class="box"><strong>💡 الاستنتاج</strong><span id="conclusion">سيظهر الاستنتاج بعد تشغيل المحاكاة.</span></div>
+</div>
+<div class="quiz"><h4>🧠 تحقق من فهمك: إذا كان تركيز المواد المذابة خارج الخلية أعلى من داخلها، فماذا يحدث غالبًا للماء في هذا النموذج؟</h4><div class="opts"><button data-a="in">يدخل إلى الخلية</button><button data-a="out">يخرج من الخلية</button><button data-a="same">لا يتحرك إطلاقًا</button><button data-a="solute">تتحول جزيئات الماء إلى مواد مذابة</button></div><div class="feedback" id="feedback"></div></div>
+</section>
+</div>
+
+<section class="resultsTable"><h3>📝 جدول تسجيل النتائج</h3><p class="small">شغّل أكثر من حالة. سيُضاف كل تشغيل تلقائيًا إلى الجدول.</p>
+<table><thead><tr><th>المحاولة</th><th>التركيز خارج الخلية</th><th>التركيز داخل الخلية</th><th>اتجاه حركة الماء الصافية</th><th>حجم الخلية</th><th>توقعي</th></tr></thead><tbody id="logBody"><tr id="emptyRow"><td colspan="6">لم تُسجّل محاولات بعد.</td></tr></tbody></table>
+</section>
+
+<section class="finalQ"><h3>🎯 استنتاج نهائي</h3><p><b>ما العلاقة بين تركيز المواد المذابة واتجاه حركة الماء عبر الغشاء في هذا النموذج؟</b></p><div class="opts">
+<button data-final="wrong">يتحرك الماء دائمًا نحو الجهة الأقل في تركيز المواد المذابة.</button>
+<button data-final="right">يكون الانتقال الصافي للماء نحو الجهة الأعلى في تركيز المواد المذابة.</button>
+<button data-final="wrong">لا يؤثر اختلاف التركيز في حركة الماء.</button>
+<button data-final="wrong">تتحول المواد المذابة إلى ماء عند الغشاء.</button>
+</div><div class="feedback" id="finalFeedback"></div></section>
+
+<section class="summaryCard"><h3>📌 خلاصة الفرق بين الانتشار والخاصية الأسموزية</h3><div class="summaryGrid"><div class="summaryItem"><strong>🟠 الانتشار</strong>حركة الجزيئات من منطقة ذات تركيز أعلى إلى منطقة ذات تركيز أقل حتى يصبح توزيعها أكثر توازنًا.</div><div class="summaryItem"><strong>💧 الخاصية الأسموزية</strong>الانتقال الصافي للماء عبر غشاء شبه منفذ من الجهة الأقل تركيزًا بالمواد المذابة إلى الجهة الأعلى تركيزًا بها.</div></div></section>
+
+<footer>نموذج تعليمي تفاعلي مبسّط لشرح الانتشار والخاصية الأسموزية — صُمم لطلاب الصف السادس الابتدائي.</footer>
+</main>
+<script>
+
+const diffStage=document.getElementById('diffStage'), diffStatus=document.getElementById('diffStatus'), diffObservation=document.getElementById('diffObservation'), diffArrow=document.getElementById('diffArrow'), diffFeedback=document.getElementById('diffFeedback');
+function buildDiffusion(){
+  diffStage.querySelectorAll('.diffParticle').forEach(x=>x.remove());
+  for(let i=0;i<24;i++){
+    const p=document.createElement('i'); p.className='diffParticle';
+    p.style.left=(56+Math.random()*35)+'%'; p.style.top=(20+Math.random()*68)+'%';
+    diffStage.appendChild(p);
+  }
+  diffStatus.textContent='جاهزة للتجربة';
+  diffArrow.classList.remove('show');
+  diffObservation.textContent='الجزيئات متجمعة في منطقة التركيز المرتفع. شغّل المحاكاة ولاحظ تغير توزيعها.';
+}
+buildDiffusion();
+document.getElementById('runDiff').onclick=()=>{
+  diffStatus.textContent='الانتشار يحدث…';
+  diffArrow.classList.add('show');
+  const ps=[...diffStage.querySelectorAll('.diffParticle')];
+  ps.forEach((p,i)=>{
+    p.style.transitionDelay=(i%6)*.08+'s';
+    p.style.left=(7+Math.random()*86)+'%';
+    p.style.top=(18+Math.random()*70)+'%';
+  });
+  setTimeout(()=>{
+    diffStatus.textContent='اكتمل الانتشار ✓';
+    diffArrow.classList.remove('show');
+    diffObservation.textContent='انتقلت الجزيئات من المنطقة الأعلى تركيزًا وانتشرت في المساحة حتى أصبح توزيعها أكثر توازنًا. تستمر الجزيئات في الحركة العشوائية حتى بعد الوصول إلى توازن ديناميكي.';
+  },2900);
+};
+document.getElementById('resetDiff').onclick=()=>{buildDiffusion();diffFeedback.textContent='';document.querySelectorAll('.diffQuiz button').forEach(b=>b.classList.remove('correct','wrong'))};
+document.querySelectorAll('.diffQuiz button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.diffQuiz button').forEach(x=>x.classList.remove('correct','wrong'));if(b.dataset.diff==='right'){b.classList.add('correct');diffFeedback.textContent='أحسنت! ✓ يكون الاتجاه الصافي من التركيز المرتفع إلى التركيز المنخفض.'}else{b.classList.add('wrong');diffFeedback.textContent='حاول مرة أخرى، وراقب اتجاه انتشار الجزيئات في المحاكاة.'}});
+
+const state={outside:'mid',inside:'mid'}; const val={low:1,mid:2,high:3}; const ar={low:'منخفض',mid:'متوسط',high:'مرتفع'};
+let trial=0;
+const stage=document.getElementById('stage'), cell=document.getElementById('cell');
+const statusEl=document.getElementById('status'), observationEl=document.getElementById('observation'), conclusionEl=document.getElementById('conclusion'), feedbackEl=document.getElementById('feedback'), sizeEl=document.getElementById('sizeResult'), directionEl=document.getElementById('direction');
+function pickParticles(){stage.querySelectorAll('.particle').forEach(x=>x.remove());
+  for(let i=0;i<28;i++){let p=document.createElement('i');p.className='particle water';p.style.left=(5+Math.random()*90)+'%';p.style.top=(12+Math.random()*76)+'%';stage.appendChild(p)}
+  const out=val[state.outside]*7, ins=val[state.inside]*7;
+  for(let i=0;i<out;i++){let p=document.createElement('i');p.className='particle solute';let x=Math.random()<.5?5+Math.random()*32:63+Math.random()*32;p.style.left=x+'%';p.style.top=(12+Math.random()*76)+'%';stage.appendChild(p)}
+  for(let i=0;i<ins;i++){let p=document.createElement('i');p.className='particle solute';p.style.left=(43+Math.random()*14)+'%';p.style.top=(38+Math.random()*32)+'%';stage.appendChild(p)} }
+pickParticles();
+document.querySelectorAll('.seg').forEach(seg=>seg.addEventListener('click',e=>{if(e.target.tagName!=='BUTTON')return;seg.querySelectorAll('button').forEach(b=>b.classList.remove('active'));e.target.classList.add('active');state[seg.dataset.key]=e.target.dataset.v;pickParticles();resetText()}));
+function resetText(){cell.style.width='190px';cell.style.height='190px';cell.style.background='rgba(141,210,255,.30)';statusEl.textContent='جاهزة للتجربة';observationEl.textContent='اضبط القيم ثم اضغط «ابدأ التجربة».';conclusionEl.textContent='سيظهر الاستنتاج بعد تشغيل المحاكاة.';sizeEl.textContent='لم تُشغّل التجربة بعد.';directionEl.style.display='none';directionEl.textContent=''}
+function addLog(direction,size){trial++;const empty=document.getElementById('emptyRow');if(empty)empty.remove();const tr=document.createElement('tr');const pred=document.getElementById('prediction').value||'لم يحدد';tr.innerHTML=`<td>${trial}</td><td>${ar[state.outside]}</td><td>${ar[state.inside]}</td><td>${direction}</td><td>${size}</td><td>${pred}</td>`;document.getElementById('logBody').appendChild(tr)}
+document.getElementById('start').onclick=()=>{statusEl.textContent='المحاكاة تعمل…';const d=val[state.outside]-val[state.inside];
+  setTimeout(()=>{let dir,size;
+  if(d>0){cell.style.width='155px';cell.style.height='155px';dir='من داخل الخلية إلى خارجها';size='يقل حجم الخلية';directionEl.textContent='💧 الماء: من داخل الخلية ← إلى خارجها';observationEl.textContent='يحدث انتقال صافٍ للماء من داخل الخلية إلى الوسط الأعلى في تركيز المواد المذابة، فيقل حجم الخلية.';conclusionEl.textContent='في الخاصية الأسموزية يكون الانتقال الصافي للماء عبر الغشاء نحو الجهة الأعلى في تركيز المواد المذابة (الأقل في تركيز الماء).'}
+  else if(d<0){cell.style.width='230px';cell.style.height='230px';cell.style.background='rgba(107,204,255,.38)';dir='من خارج الخلية إلى داخلها';size='يزداد حجم الخلية';directionEl.textContent='💧 الماء: من خارج الخلية ← إلى داخلها';observationEl.textContent='يحدث انتقال صافٍ للماء إلى داخل الخلية لأن تركيز المواد المذابة داخلها أعلى، فيزداد حجمها في النموذج.';conclusionEl.textContent='في الخاصية الأسموزية يكون الانتقال الصافي للماء عبر الغشاء نحو الجهة الأعلى في تركيز المواد المذابة (الأقل في تركيز الماء).'}
+  else{dir='في الاتجاهين دون انتقال صافٍ';size='لا يتغير حجم الخلية';directionEl.textContent='↔ الماء يتحرك في الاتجاهين دون انتقال صافٍ';observationEl.textContent='تركيز المواد المذابة متساوٍ في الجهتين؛ تستمر جزيئات الماء في الحركة في الاتجاهين بمعدلات متساوية تقريبًا.';conclusionEl.textContent='عند تساوي التركيزين لا يحدث انتقال صافٍ للماء؛ لذلك لا يتغير حجم الخلية، مع استمرار حركة جزيئات الماء في الاتجاهين.'}
+  sizeEl.textContent=size;directionEl.style.display='block';statusEl.textContent='اكتملت التجربة ✓';animateWater(d);addLog(dir,size)},500)};
+function animateWater(d){stage.querySelectorAll('.water').forEach((p,i)=>{p.style.transition='left 1.5s ease, top 1.5s ease';if(d>0&&i%2===0)p.style.left=(Math.random()<.5?15:80)+'%';if(d<0&&i%2===0)p.style.left=(46+Math.random()*8)+'%';p.style.top=(15+Math.random()*70)+'%'})}
+document.getElementById('reset').onclick=()=>{state.outside='mid';state.inside='mid';document.querySelectorAll('.seg').forEach(s=>{s.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.v==='mid'))});pickParticles();resetText();feedbackEl.textContent='';document.getElementById('prediction').value='';document.querySelectorAll('.quiz button').forEach(b=>b.classList.remove('correct','wrong'))};
+document.querySelectorAll('.quiz button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.quiz button').forEach(x=>x.classList.remove('correct','wrong'));if(b.dataset.a==='out'){b.classList.add('correct');feedbackEl.textContent='أحسنت! ✓ يكون الانتقال الصافي للماء إلى خارج الخلية.'}else{b.classList.add('wrong');feedbackEl.textContent='حاول مرة أخرى، وفكّر في الجهة الأعلى في تركيز المواد المذابة.'}});
+document.querySelectorAll('[data-final]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-final]').forEach(x=>x.classList.remove('correct','wrong'));const f=document.getElementById('finalFeedback');if(b.dataset.final==='right'){b.classList.add('correct');f.textContent='أحسنت! ✓ هذا هو الاستنتاج الصحيح للخاصية الأسموزية في هذا النموذج.'}else{b.classList.add('wrong');f.textContent='حاول مرة أخرى: قارن بين تركيز المواد المذابة على جانبي الغشاء.'}});
+</script>
+</body></html>
